@@ -3,8 +3,8 @@ var nameElement;
 var hexCode = "";
 
 var colors;
-$.getJSON( "https://raw.githubusercontent.com/flamesdev/color/master/colors.json", function(json) {
-  colors = json.Colors;
+$.getJSON("https://raw.githubusercontent.com/flamesdev/color/master/colors.json", function(json) {
+    colors = json.Colors;
 });
 
 window.onload = function() {
@@ -21,7 +21,7 @@ document.addEventListener('keydown', (event) => {
             "0123456789abcdef".split('').includes(keyName))
             hexCode += keyName;
     } else
-        hexCode = hexCode.substring(0, length - 2);
+        hexCode = hexCode.substring(0, length - 1);
 
     hexElement.innerHTML = "#" + hexCode;
     if (hexCode.length === 6)
@@ -63,12 +63,9 @@ class Functions {
         var values = hex.split(''),
             r, g, b;
 
-        if (hex.length === 6) {
-            r = parseInt(values[0].toString() + values[1].toString(), 16);
-            g = parseInt(values[2].toString() + values[3].toString(), 16);
-            b = parseInt(values[4].toString() + values[5].toString(), 16);
-        } else
-            return false;
+        r = parseInt(values[0].toString() + values[1].toString(), 16);
+        g = parseInt(values[2].toString() + values[3].toString(), 16);
+        b = parseInt(values[4].toString() + values[5].toString(), 16);
         return [r, g, b];
     }
 
