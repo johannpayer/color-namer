@@ -60,8 +60,7 @@ class Functions {
             hex = hex.substring(1);
         if (hex.length !== 6)
             return false;
-        var values = hex.split(''),
-            r, g, b;
+        var values = hex.split(''), r, g, b;
 
         r = parseInt(values[0].toString() + values[1].toString(), 16);
         g = parseInt(values[2].toString() + values[3].toString(), 16);
