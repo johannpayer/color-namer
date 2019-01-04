@@ -6,13 +6,15 @@ var hexCode = "";
 // Booleans
 var fruit_mode = false;
 
+var colorURL = "https://raw.githubusercontent.com/flamesdev/color-namer/master/color pallets/";
+
 var standard_colors;
-$.getJSON("https://raw.githubusercontent.com/flamesdev/color-namer/master/color pallets/standard.json", function(json) {
+$.getJSON(colorURL + "standard.json", function(json) {
     "use strict";
     standard_colors = json.Colors;
 });
 var fruit_colors;
-$.getJSON("https://raw.githubusercontent.com/flamesdev/color-namer/master/color pallets/fruit.json", function(json) {
+$.getJSON(colorURL + "fruit.json", function(json) {
     "use strict";
     fruit_colors = json.Colors;
 });
