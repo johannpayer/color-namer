@@ -24,39 +24,45 @@ window.onload = function() {
 };
 
 document.addEventListener("keydown", (event) => {
-    if (event.keyCode == 18) {
+    if (event.keyCode == 17) {
         fruit_mode = !fruit_mode;
+        UpdateColor();
     } else {
-    var keyName = event.key.toLowerCase();
-    var length = hexCode.length;
+        var keyName = event.key.toLowerCase();
+        var length = hexCode.length;
 
-    if (event.keyCode != 8) {
-        if (length < 6 && "0123456789abcdef".split("").includes(keyName))
-            hexCode += keyName;
-    } else
-        hexCode = hexCode.substring(0, length - 1);
+        if (event.keyCode != 8) {
+            if (length < 6 && "0123456789abcdef".split("").includes(keyName))
+                hexCode += keyName;
+        } else
+            hexCode = hexCode.substring(0, length - 1);
 
-    hexElement.innerHTML = "#" + hexCode;
-    if (hexCode.length === 6)
-        document.body.style.backgroundColor = "#" + hexCode;
-    else
-        document.body.style.backgroundColor = "black";
+        hexElement.innerHTML = "#" + hexCode;
+        if (hexCode.length === 6)
+            document.body.style.backgroundColor = "#" + hexCode;
+        else
+            document.body.style.backgroundColor = "black";
 
-    var rgb = Functions.hexToRGB(hexCode);
-    var color;
-    if (Functions.getAverage(rgb) / 255 >= 0.5)
-        color = "black";
-    else
-        color = "white";
-    hexElement.style.color = color;
-    nameElement.style.color = color;
-    var displayColor = "";
-    var colors;
-    if (fruit_mode)
+        var rgb = Functions.hexToRGB(hexCode);
+        var color;
+        if (Functions.getAverage(rgb) / 255 >= 0.5)
+            color = "black";
+        else
+            color = "white";
+        hexElement.style.color = color;
+        nameElement.style.color = color;
+        var displayColor = "";
+        var colors;
+        if (fruit_mode)
             colors = fruit_colors;
         else
             colors = standard_colors;
-    if (hexCode.length === 6) {
+        if (hexCode.length === 6)
+            UpdateColor();
+        nameElement.innerHTML = displayColor;
+    }
+
+    function UpdateColor() {
         var closest = -1;
         Array.prototype.forEach.call(colors, item => {
             var color = Functions.hexToRGB(item.Color);
@@ -68,8 +74,6 @@ document.addEventListener("keydown", (event) => {
                 displayColor = item.Name;
             }
         });
-    }
-    nameElement.innerHTML = displayColor;
     }
 });
 
