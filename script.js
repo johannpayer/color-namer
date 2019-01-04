@@ -1,24 +1,26 @@
+/*global $*/
 var hexElement;
 var nameElement;
 var hexCode = "";
 
 var colors;
 $.getJSON("https://raw.githubusercontent.com/flamesdev/color/master/colors.json", function(json) {
+    "use strict";
     colors = json.Colors;
 });
 
 window.onload = function() {
+    "use strict";
     hexElement = document.getElementById("hex");
     nameElement = document.getElementById("name");
 };
 
-document.addEventListener('keydown', (event) => {
+document.addEventListener("keydown", (event) => {
     var keyName = event.key.toLowerCase();
     var length = hexCode.length;
 
     if (event.keyCode != 8) {
-        if (length < 6 &&
-            "0123456789abcdef".split('').includes(keyName))
+        if (length < 6 && "0123456789abcdef".split("").includes(keyName))
             hexCode += keyName;
     } else
         hexCode = hexCode.substring(0, length - 1);
@@ -56,11 +58,12 @@ document.addEventListener('keydown', (event) => {
 
 class Functions {
     static hexToRGB(hex) {
-        if (hex[0] === '#')
+        if (hex[0] === "#")
             hex = hex.substring(1);
         if (hex.length !== 6)
             return false;
-        var values = hex.split(''), r, g, b;
+        var values = hex.split(""),
+            r, g, b;
 
         r = parseInt(values[0].toString() + values[1].toString(), 16);
         g = parseInt(values[2].toString() + values[3].toString(), 16);
