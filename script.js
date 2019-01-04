@@ -3,10 +3,18 @@ var hexElement;
 var nameElement;
 var hexCode = "";
 
-var colors;
-$.getJSON("https://raw.githubusercontent.com/flamesdev/color/master/colors.json", function(json) {
+// Booleans
+var fruit_mode = false;
+
+var standard_colors;
+$.getJSON("https://raw.githubusercontent.com/flamesdev/color/master/color pallets/standard.json", function(json) {
     "use strict";
-    colors = json.Colors;
+    standard_colors = json.Colors;
+});
+var fruit_colors;
+$.getJSON("https://raw.githubusercontent.com/flamesdev/color/master/color pallets/fruit.json", function(json) {
+    "use strict";
+    fruit_colors = json.Colors;
 });
 
 window.onload = function() {
@@ -16,6 +24,9 @@ window.onload = function() {
 };
 
 document.addEventListener("keydown", (event) => {
+    if (event.keyCode == 18) {
+        fruit_mode = !fruit_mode;
+    } else {
     var keyName = event.key.toLowerCase();
     var length = hexCode.length;
 
@@ -40,6 +51,11 @@ document.addEventListener("keydown", (event) => {
     hexElement.style.color = color;
     nameElement.style.color = color;
     var displayColor = "";
+    var colors;
+    if (fruit_mode)
+            colors = fruit_colors;
+        else
+            colors = standard_colors;
     if (hexCode.length === 6) {
         var closest = -1;
         Array.prototype.forEach.call(colors, item => {
@@ -54,6 +70,7 @@ document.addEventListener("keydown", (event) => {
         });
     }
     nameElement.innerHTML = displayColor;
+    }
 });
 
 class Functions {
