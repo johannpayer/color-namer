@@ -66,6 +66,13 @@ document.addEventListener("keydown", (event) => {
     UpdateDisplay();
 });
 
+document.addEventListener("copy", function(event) {
+    if (hexCode.length === 6)
+        event.clipboardData.setData("text/plain",
+            hexElement.innerHTML + " " + nameElement.innerHTML);
+    event.preventDefault();
+});
+
 function UpdateColor() {
     if (hexCode.length === 6) {
         var rgb = Functions.hexToRGB(hexCode);
