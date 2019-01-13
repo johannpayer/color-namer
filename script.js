@@ -35,8 +35,7 @@ document.addEventListener("keydown", (event) => {
             colors = fruit_colors;
         else
             colors = standard_colors;
-        UpdateColor();
-        index = 0;
+        index = UpdateColor();
     }
     if (event.keyCode === 37) {
         if (index === 0)
@@ -77,8 +76,10 @@ function UpdateColor() {
     if (hexCode.length === 6) {
         var rgb = Functions.hexToRGB(hexCode);
         var closest = -1;
+        var index = 0;
         var displayColor = "";
-        Array.prototype.forEach.call(colors, item => {
+        for (var i = 0; i < colors.length; i++) {
+            var item = colors[i];
             var color = Functions.hexToRGB(item.Color);
             var similarity = Math.abs(color[0] - rgb[0]) +
                 Math.abs(color[1] - rgb[1]) +
@@ -86,9 +87,11 @@ function UpdateColor() {
             if (closest === -1 || similarity < closest) {
                 closest = similarity;
                 displayColor = item.Name;
+                index = i;
             }
-        });
+        }
         nameElement.innerHTML = displayColor;
+        return index;
     }
 }
 
