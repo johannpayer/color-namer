@@ -68,7 +68,7 @@ document.addEventListener("keydown", (event) => {
 document.addEventListener("copy", function(event) {
     if (hexCode.length === 6)
         event.clipboardData.setData("text/plain",
-            hexElement.innerHTML + " " + nameElement.innerHTML);
+            nameElement.innerHTML +" - " + hexElement.innerHTML);
     event.preventDefault();
 });
 
