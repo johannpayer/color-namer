@@ -106,7 +106,7 @@ function UpdateDisplay() {
 
     var rgb = Functions.hexToRGB(hexCode);
     var color;
-    if (Functions.getAverage(rgb) / 255 >= 0.5)
+    if ((rgb[0] * 0.2126 + rgb[1] * 0.7152 + rgb[2] * 0.0722) / 255 >= 0.5)
         color = "black";
     else
         color = "white";
@@ -133,10 +133,6 @@ class Functions {
         g = parseInt(values[2].toString() + values[3].toString(), 16);
         b = parseInt(values[4].toString() + values[5].toString(), 16);
         return [r, g, b];
-    }
-
-    static getAverage(numbers) {
-        return this.getTotal(numbers) / numbers.length;
     }
 
     static getTotal(numbers) {
