@@ -58,10 +58,10 @@ document.addEventListener("keydown", (event) => {
 
     if (event.keyCode === 8 && hexCode.length !== 0)
         hexCode = hexCode.substring(0, length - 1);
-    else if (length < 6 && "0123456789abcdef".split("").includes(keyName))
-        hexCode += keyName;
-
-    UpdateColor();
+    else if (length < 6 && "0123456789abcdef".split("").includes(keyName)) {
+      hexCode += keyName;
+      index = UpdateColor();
+    }
     UpdateDisplay();
 });
 
