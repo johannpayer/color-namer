@@ -9,18 +9,18 @@ var fruit_mode = false;
 var colorURL = "https://raw.githubusercontent.com/flamesdev/color-namer/master/color pallets/";
 
 var standard_colors;
-$.getJSON(colorURL + "standard.json", function(json) {
+$.getJSON(colorURL + "standard.json", function (json) {
     "use strict";
     standard_colors = json.Colors;
     colors = standard_colors;
 });
 var fruit_colors;
-$.getJSON(colorURL + "fruit.json", function(json) {
+$.getJSON(colorURL + "fruit.json", function (json) {
     "use strict";
     fruit_colors = json.Colors;
 });
 
-window.onload = function() {
+window.onload = function () {
     "use strict";
     hexElement = document.getElementById("hex");
     nameElement = document.getElementById("name");
@@ -59,16 +59,16 @@ document.addEventListener("keydown", (event) => {
     if (event.keyCode === 8 && hexCode.length !== 0)
         hexCode = hexCode.substring(0, length - 1);
     else if (length < 6 && "0123456789abcdef".split("").includes(keyName)) {
-      hexCode += keyName;
-      index = UpdateColor();
+        hexCode += keyName;
+        index = UpdateColor();
     }
     UpdateDisplay();
 });
 
-document.addEventListener("copy", function(event) {
+document.addEventListener("copy", function (event) {
     if (hexCode.length === 6)
         event.clipboardData.setData("text/plain",
-            nameElement.innerHTML +" - " + hexElement.innerHTML);
+            nameElement.innerHTML + " - " + hexElement.innerHTML);
     event.preventDefault();
 });
 
