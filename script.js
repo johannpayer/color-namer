@@ -8,6 +8,7 @@ var fruit_mode = false;
 
 var colorURL = "https://raw.githubusercontent.com/flamesdev/color-namer/master/color pallets/";
 
+var colors;
 var standard_colors;
 $.getJSON(colorURL + "standard.json", function (json) {
     "use strict";
