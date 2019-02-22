@@ -12,13 +12,13 @@ var colors;
 var standard_colors;
 $.getJSON(colorURL + "standard.json", function (json) {
     "use strict";
-    standard_colors = json.Colors;
+    standard_colors = json;
     colors = standard_colors;
 });
 var fruit_colors;
 $.getJSON(colorURL + "fruit.json", function (json) {
     "use strict";
-    fruit_colors = json.Colors;
+    fruit_colors = json;
 });
 
 window.onload = function () {
