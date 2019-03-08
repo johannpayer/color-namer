@@ -15,8 +15,14 @@
 
 p {
     user-select: none;
+    animation: fadeIn 2s;
 }
 
 body {
     background-color: #000000;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
 }
