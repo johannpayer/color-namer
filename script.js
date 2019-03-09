@@ -1,4 +1,5 @@
-/*global $*/
+"use strict";
+
 var hexElement;
 var nameElement;
 var hexCode = "";
@@ -11,18 +12,15 @@ var colorURL = "https://raw.githubusercontent.com/flamesdev/color-namer/master/c
 var colors;
 var standard_colors;
 $.getJSON(colorURL + "standard.json", function (json) {
-    "use strict";
     standard_colors = json;
     colors = standard_colors;
 });
 var fruit_colors;
 $.getJSON(colorURL + "fruit.json", function (json) {
-    "use strict";
     fruit_colors = json;
 });
 
 window.onload = function () {
-    "use strict";
     hexElement = document.getElementById("hex");
     nameElement = document.getElementById("name");
 };
