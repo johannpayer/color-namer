@@ -133,12 +133,4 @@ class Functions {
         b = parseInt(values[4].toString() + values[5].toString(), 16);
         return [r, g, b];
     }
-
-    static getTotal(numbers) {
-        var val = 0;
-        Array.prototype.forEach.call(numbers, number => {
-            val += number;
-        });
-        return val;
-    }
 }
